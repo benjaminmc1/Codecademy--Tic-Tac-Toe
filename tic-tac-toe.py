@@ -28,3 +28,40 @@
         ---+---+---
          7 | 8 | 9
     """
+
+import random
+import os
+import platform
+
+# Utility Functions
+
+def clear_screen():
+    # Clears terminal screen for better readability based on OS
+    if platform.system() = "Windows":
+        os.system("cls")
+    else:
+        os.system("clear")
+
+def print_board(board):
+    # Displays current state of the Tic Tac Toe board
+    print()
+    for i in range(3):
+        row = " | ".join(board[i*3]:(i+1)*3])
+        print(" " + row)
+        if i < 2:
+            print("---+---+---")
+    print()
+
+def check_win(board, player):
+    # Checks if a player has won the game
+    # Add win condition checks
+    pass
+
+def check_draw(board):
+    # Checks if board is full and it is a draw
+    # Return true if no empty space and no winner
+    pass
+
+def switch_player(current):
+    # Switch player between X and O
+    return 'O' if current == 'X' else 'X'
