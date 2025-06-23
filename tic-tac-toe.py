@@ -54,13 +54,28 @@ def print_board(board):
 
 def check_win(board, player):
     # Checks if a player has won the game
-    # Add win condition checks
-    pass
+    win_combinations = [
+        # Horizontal
+        [0, 1, 2],
+        [3, 4, 5],
+        [6, 7, 8],
+        # Vertical
+        [0, 3, 6],
+        [1, 4, 7],
+        [2, 5, 8],
+        # Diagonal
+        [0, 4, 8],
+        [2, 4, 6],
+    ]
+
+    for combo in win_combinations:
+        if all(board[i] == player for i in combo):
+            return True
+        return False
 
 def check_draw(board):
     # Checks if board is full and it is a draw
-    # Return true if no empty space and no winner
-    pass
+    return ' ' not in board
 
 def switch_player(current):
     # Switch player between X and O
