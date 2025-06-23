@@ -86,3 +86,14 @@ def get_ai_move(board):
     if available:
         index = random.choice(available)
         board[index] = 'O' # AI always plays as 'O'
+
+# Game Setup
+
+def choose_game_mode():
+    # Prompts user to select one- or two-player mode.
+    while True:
+        choice = input("Choose game mode (1 - vs AI, 2 = 2 Players): ")
+        if choice in ('1', '2'):
+            return choice
+        print("Invalid input. Please enter 1 or 2.")
+
