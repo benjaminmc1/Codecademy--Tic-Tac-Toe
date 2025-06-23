@@ -65,3 +65,24 @@ def check_draw(board):
 def switch_player(current):
     # Switch player between X and O
     return 'O' if current == 'X' else 'X'
+
+# Move Handling
+
+def get_player_move(board, player):
+    # Gets and applies move from human player
+    while True:
+        move = input(f"Player {player}, enter your move (1-9): ")
+        if move.isdigit():
+            index = int(move) - 1
+            if 0 <= index < 9 and board[index] == ' ':
+                board[index] = player
+                break
+        print("Invalid move. Try again.")
+
+def get_ai_move(board):
+    # Simple AI chooses random spot on the board
+    print("AI is thinking...")
+    available = [i for i, spot in enumerate(board) if spot == ' ']
+    if available:
+        index = random.choice(available)
+        board[index] = 'O' # AI always plays as 'O'
