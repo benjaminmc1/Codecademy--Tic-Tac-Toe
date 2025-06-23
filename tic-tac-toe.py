@@ -37,7 +37,7 @@ import platform
 
 def clear_screen():
     # Clears terminal screen for better readability based on OS
-    if platform.system() = "Windows":
+    if platform.system() == "Windows":
         os.system("cls")
     else:
         os.system("clear")
@@ -46,7 +46,7 @@ def print_board(board):
     # Displays current state of the Tic Tac Toe board
     print()
     for i in range(3):
-        row = " | ".join(board[i*3]:(i+1)*3])
+        row = " | ".join(board[i*3:(i+1)*3])
         print(" " + row)
         if i < 2:
             print("---+---+---")
@@ -65,7 +65,7 @@ def check_win(board, player):
         [2, 5, 8],
         # Diagonal
         [0, 4, 8],
-        [2, 4, 6],
+        [2, 4, 6]
     ]
 
     for combo in win_combinations:
@@ -117,13 +117,14 @@ def choose_game_mode():
 def play_game():
     board = [' '] * 9
     mode = choose_game_mode()
+    mode = int(mode)
     current_player = 'X'
 
     while True:
         clear_screen()
         print_board(board)
 
-        if mode == '1': # One player vs AI
+        if mode == 1: # One player vs AI
             if current_player == 'X':
                 get_player_move(board, 'X')
             else:
@@ -147,5 +148,5 @@ def play_game():
 
 # Entry Point
 
-if __name__ = "__main__":
+if __name__ == "__main__":
     play_game()
