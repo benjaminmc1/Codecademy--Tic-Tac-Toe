@@ -97,3 +97,40 @@ def choose_game_mode():
             return choice
         print("Invalid input. Please enter 1 or 2.")
 
+# Main Game Loop
+
+def play_game():
+    board = [' '] * 9
+    mode = choose_game_mode()
+    current_player = 'X'
+
+    while True:
+        clear_screen()
+        print_board(board)
+
+        if mode == '1': # One player vs AI
+            if current_player == 'X':
+                get_player_move(board, 'X')
+            else:
+                get_ai_move(board)
+        else: # Two players
+            get_player_move(board, current_player)
+
+        if check_win(board, current_player):
+            clear_screen()
+            print_board(board)
+            print(f"Player {current_player} wins!")
+            break
+        
+        if check_draw(board):
+            clear_screen()
+            print_board(board)
+            print("It's a draw!")
+            break
+
+        current_player = switch_player(current_player)
+
+# Entry Point
+
+if __name__ = "__main__":
+    play_game()
